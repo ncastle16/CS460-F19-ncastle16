@@ -1,16 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
+
     <title>Pictures</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+<body>
+  
+  
      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
              <div class="collapse navbar-collapse" id="collapsibleNavId">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -27,12 +30,23 @@
             </div>
           </nav>
 
-  <div class="jumbotron text-center">
+  <div class="jumbotron text-center bg-secondary">
       <div class="container">
-          <h1 class="display-3">Pictures</h1>
-          <p class="lead">Jumbo helper text</p>
+          <h1 class="display-3">Pictures and Videos</h1>
           <hr class="my-2">
       </div>
   </div>
+
+  <table style="width:100%">
+      <tr>
+        <td><video controls autoplay src="Pic3.mov" alt="Kendama3" width="AUTO" height="300"></td>
+        <td><img src="Pic1.jpg"  alt="Kendama1" width="AUTO" height="300"></td>
+      </tr>
+      <tr>
+        <td><img src="Pic2.jpg" alt="Kendama2" width="AUTO" height="300"></td>
+        <td><img src="Pic4.jpg" alt="Kendama4" width="Auto" height="300"></td>
+      </tr>
+    </table>
+  </body>
 
 </html>
