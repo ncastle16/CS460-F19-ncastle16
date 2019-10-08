@@ -1,5 +1,6 @@
 body {
     background-color:rgb(68, 74, 151);
+    scroll-margin-bottom: 100000px;
   }
   
   h1 {
@@ -21,7 +22,7 @@ body {
       list-style-type: decimal;
   }
 
-  p1.Bmargin{
+  p.Bmargin{
       margin-bottom: 300px;
   }
 
