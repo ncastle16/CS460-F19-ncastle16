@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="HW2Styles.css" rel="stylesheet" type="text/css">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tip calculator</title>
 </head>
 <body>
-    <h1>Tip calculator</h1>
-<div>
+    <div class="jumbotron text-center bg-secondary">
+        <div class="container">
+            <h1 class="display-3">Tips!</h1>
+            <p class="lead">Nobody likes to do math, let us help you!</p>
+            <hr class="my-2">
+        </div>
+    </div>
+<div align="center">
 <form id="gen">
  <fieldset>
   <legend>Tip generator:</legend>
@@ -18,9 +25,11 @@
   <input type="submit" value="Go!" />
  </fieldset>
 </form>
+<br>
+<br>
 </div>
 
-<div id="theNums">
+<div id="theNums" align="center">
 
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
