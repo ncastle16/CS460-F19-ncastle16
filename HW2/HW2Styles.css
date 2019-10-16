@@ -3,6 +3,10 @@ body{
     background-color: antiquewhite;
 }
 
+h1, .lead{
+    color: white;
+}
+
 table, th, td{
     border: 1px solid black;
     border-collapse: collapse;
