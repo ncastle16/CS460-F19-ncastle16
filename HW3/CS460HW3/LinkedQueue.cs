@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CS460HW3
 {
-    class LinkedQueue<T>
+   class LinkedQueue<T> : IQueueInterface<T>
     {
         private Node<T> Front;
         private Node<T> Rear;
@@ -17,14 +17,14 @@ namespace CS460HW3
             Rear = null;
         }
 
-        public T push(T element)
+        public T Push(T element)
         {
             if (element == null)
             {
-                throw new NullPointerException();
+                throw new NullReferenceException();
             }
 
-            if (isEmpty())
+            if (IsEmpty())
             {
                 Node<T> tmp = new Node<T>(element, null);
                 Rear = Front = tmp;
@@ -38,10 +38,10 @@ namespace CS460HW3
             return element;
         }
 
-        public T pop()
+        public T Pop()
         {
             T tmp = default(T);
-            if (isEmpty())
+            if (IsEmpty())
             {
                 throw new QueueUnderflowException("The queue was empty when pop was invoked.");
             }
@@ -61,16 +61,16 @@ namespace CS460HW3
             return tmp;
         }
 
-        public T peek()
+        public T Peek()
         {
-            if (isEmpty())
+            if (IsEmpty())
             {
                 throw new QueueUnderflowException("The queue was empty when peek was invoked.");
             }
             return Front.data;
         }
 
-        public bool isEmpty()
+        public bool IsEmpty()
         {
             if (Front == null && Rear == null)
             {

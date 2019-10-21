@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace CS460HW3
 {
-    public class QueueUnderflowException
+    public class QueueUnderflowException : Exception
     {
   public QueueUnderflowException()
     {
-            return;
     }
 
-    public QueueUnderflowException(String message)
+    public QueueUnderflowException(String message) 
+            : base(message)
     {
-        ;
     }
 }
 

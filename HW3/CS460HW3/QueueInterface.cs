@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CS460HW3
 {
-    public interface QueueInterface<T>
+    public interface IQueueInterface<T>
     {
 
         T Push(T element);
         T Pop();
         T Peek();
         bool IsEmpty();
+      
     }
 }
