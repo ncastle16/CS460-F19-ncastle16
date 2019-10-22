@@ -26,7 +26,7 @@ namespace CS460HW3
         {
             int C = 1000;                     // Column length to wrap to
             String inputFilename = (@"C:\Users\ncast\OneDrive\Desktop\CS460\CS460-F19-ncastle16\HW3\CS460HW3\WarOfTheWorlds.txt");
-            String outputFilename = @"C:\Users\ncast\OneDrive\Desktop\CS460\CS460-F19-ncastle16\HW3\CS460HW3\test.txt";
+            String outputFilename;
             String[] test = null;
             String line = null;
             using (StreamReader sr = new StreamReader(inputFilename))
@@ -115,7 +115,7 @@ namespace CS460HW3
                 // See if we need to wrap to the next line
                 if (col == 1)
                 {
-                    outp.WriteLine(str);
+                    outp.Write(str);
                     col += len;
                     words.Pop();
                 }
@@ -128,8 +128,8 @@ namespace CS460HW3
                 }
                 else
                 {   // Typical case of printing the next word on the same line
-                    outp.WriteLine(" ");
-                    outp.WriteLine(str);
+                    outp.Write(" ");
+                    outp.Write(str);
                     col += (len + 1);
                     words.Pop();
                 }
