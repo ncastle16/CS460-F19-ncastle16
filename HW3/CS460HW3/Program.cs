@@ -63,7 +63,7 @@ namespace CS460HW3
             }
 
             // Read words and their lengths into these vectors
-
+            line = line.Replace("\r\n", " ");
             IQueueInterface<String> words = new LinkedQueue<string>();
 
             int WordStart = 0;
