@@ -25,16 +25,10 @@ namespace CS460HW3
         public static int Main(String[] args)
         {
             int C = 1000;                     // Column length to wrap to
-            String inputFilename = (@"C:\Users\ncast\OneDrive\Desktop\CS460\CS460-F19-ncastle16\HW3\CS460HW3\WarOfTheWorlds.txt");
-            String outputFilename;
-            String[] test = null;
+            String InputFilename;
+            String OutputFilename;
             String line = null;
-            using (StreamReader sr = new StreamReader(inputFilename))
-            {
-                // Read the stream to a string, and write the string to the console.
-                line = sr.ReadToEnd();
-            }
-
+           
             // Read the command line arguments ...
             if (args.Length != 3)
             {
@@ -45,8 +39,8 @@ namespace CS460HW3
             try
             {
                 C = int.Parse(args[0]);
-                inputFilename = args[1];
-                outputFilename = args[2];
+                InputFilename = args[1];
+                OutputFilename = args[2];
                 
             }
             catch (FileNotFoundException)
@@ -62,7 +56,12 @@ namespace CS460HW3
                 return (2);
             }
 
-            // Read words and their lengths into these vectors
+            using (StreamReader sr = new StreamReader(InputFilename))
+            {
+                // Read the stream to a string, and write the string to the console.
+                line = sr.ReadToEnd();
+            }
+
             line = line.Replace("\r\n", " ");
             IQueueInterface<String> words = new LinkedQueue<string>();
 
@@ -76,7 +75,7 @@ namespace CS460HW3
 
             }
 
-            int spacesRemaining = WrapSimply(words, C, outputFilename);
+            int spacesRemaining = WrapSimply(words, C, OutputFilename);
             Console.WriteLine("Total spaces remaining (Greedy): " + spacesRemaining);
             return 0;
         } // End main()
@@ -84,59 +83,52 @@ namespace CS460HW3
         /*-----------------------------------------------------------------------
             Greedy Algorithm (Non-optimal i.e. approximate or heuristic solution)
           -----------------------------------------------------------------------*/
-
-        /**
-            As an example only, write out the file directly to the output with _simple_ wrapping,
-            i.e. adding spaces between words and moving to the next line if a word would go past the
-            indicated column number C.  This will fail if any word length exceeds the column limit C,
-            but it still goes ahead and just puts one word on that line.
-        */
-        private static int WrapSimply(IQueueInterface<String> words, int columnLength, String outputFilename)
+        private static int WrapSimply(IQueueInterface<String> Words, int ColumnLength, String OutputFilename)
         {
-            StreamWriter outp;
-            outp = null;
+            StreamWriter Outp;
+            Outp = null;
                 try
             {
-                outp = new StreamWriter(outputFilename);
+                Outp = new StreamWriter(OutputFilename);
             }
             catch (FileNotFoundException)
             {
                 System.Console.WriteLine("Cannot create or " +
-                    "open " + outputFilename +
+                    "open " + OutputFilename +
                             " for writing.  Using standard output instead.");
             }
 
-            int col = 1;
+            int Col = 1;
             int spacesRemaining = 0;            // Running count of spaces left at the end of lines
-            while (!words.IsEmpty())
+            while (!Words.IsEmpty())
             {
-                String str = words.Peek();
-                int len = str.Length;
+                String str = Words.Peek();
+                int Len = str.Length;
                 // See if we need to wrap to the next line
-                if (col == 1)
+                if (Col == 1)
                 {
-                    outp.Write(str);
-                    col += len;
-                    words.Pop();
+                    Outp.Write(str);
+                    Col += Len;
+                    Words.Pop();
                 }
-                else if ((col + len) >= columnLength)
+                else if ((Col + Len) >= ColumnLength)
                 {
                     // go to the next line
-                    outp.WriteLine();
-                    spacesRemaining += (columnLength - col) + 1;
-                    col = 1;
+                    Outp.WriteLine();
+                    spacesRemaining += (ColumnLength - Col) + 1;
+                    Col = 1;
                 }
                 else
                 {   // Typical case of printing the next word on the same line
-                    outp.Write(" ");
-                    outp.Write(str);
-                    col += (len + 1);
-                    words.Pop();
+                    Outp.Write(" ");
+                    Outp.Write(str);
+                    Col += (Len + 1);
+                    Words.Pop();
                 }
 
             }
-            outp.WriteLine();
-            outp.Close();
+            Outp.WriteLine();
+            Outp.Close();
             return spacesRemaining;
         } // end wrapSimply
     }
