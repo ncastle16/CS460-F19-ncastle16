@@ -1,32 +1,33 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Interporlator";
-} 
+}
 
-    <link rel="stylesheet" href="HomepageStyles.css" />
-    <h2>Inter</h2> 
+<link rel="stylesheet" href="HomepageStyles.css" />
+<h2>Inter</h2>
 
-    <div class="col-md-4">
+<div class="col-md-4">
 
-        @using (Html.BeginForm("Interporlator", "Interporlator", FormMethod.Post))
+    @using (Html.BeginForm("Interporlator", "Interporlator", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.Label("First Color: ")
+            @Html.TextBox("FirstColor", null, new { @class = "form-control", type = "string" })
+            @Html.Label("Second Color: ")
+            @Html.TextBox("SecondColor", null, new { @class = "form-control", type = "string" })
+            @Html.Label("Number of Colors: ")
+            @Html.TextBox("Amount", null, new { @class = "form-control", type = "number" })
+            <button type="submit" class="btn btn-primary">Generate!</button>
+        </div>
+
+        int i = 0;
+        while (i < @ViewBag.Amount)
         {
-            <div class="form-group">
-                @Html.Label("First Color: ")
-                @Html.TextBox("FirstColor", null, new { @class = "form-control", type = "string" })
-                @Html.Label("Second Color: ")
-                @Html.TextBox("SecondColor", null, new { @class = "form-control", type = "string" })
-                @Html.Label("Number of Colors: ")
-                @Html.TextBox("Amount", null, new { @class = "form-control", type = "number" })
-                <button type="submit" class="btn btn-primary">Generate!</button>
-            </div>
-            
-            int i = 0;
-            while (i < @ViewBag.Amount)
-            {
-                <br/>
-                <div style="float: right; width:100px; height:10px; border:1px solid"></div>
-                i++;
-            }
-
+            <br />
+            <div style="float: right; width:100px; height:20px; background-color: @ViewBag.FC"></div>
+            ViewBag.FC += ViewBag.test;
+            i++;
         }
+    }
 
-    </div>
+
+</div>
