@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "RGB";
+}
+
+<h2>RGB</h2>
+<link rel="stylesheet" href="HomepageStyles.css"/>
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("RGB", "RGB", FormMethod.Get))
+        {
+        <div class="form-group">
+            @Html.Label("Red: ")
+            @Html.TextBox("Red", null, new { @class = "form-control", type = "number", min = 0, max = 255 })
+            @Html.Label("Green: ")
+            @Html.TextBox("Green", null, new { @class = "form-control", type = "number", min = 0, max = 255 })
+            @Html.Label("Blue: ")
+            @Html.TextBox("Blue", null, new { @class = "form-control", type = "number", min = 0, max = 255 })
+            <button type="submit" class="btn btn-primary">Render!</button>
+            <p style="float: right; width:100px; height:100px; border:1px solid; background-color: rgb(@ViewBag.red, @ViewBag.green, @ViewBag.blue)"></p>
+        </div>
+        }
+
+    </div>
+
+</div>
+
+
