@@ -1,0 +1,25 @@
+﻿body {
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 20px;
+    height: 300px; 
+    border-style:solid;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+* {
+    box-sizing: border-box;
+}
+
+.box {
+    width: 300px;
+    height: 100px;
+    border: 1px solid;
+}
