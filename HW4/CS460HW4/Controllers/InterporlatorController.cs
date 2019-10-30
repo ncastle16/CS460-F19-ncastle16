@@ -55,19 +55,33 @@ namespace CS460HW4.Controllers
                     return Color.FromArgb(255, v, p, q);
             }
             Color F = ColorTranslator.FromHtml(FirstColor);
-            Color S = ColorTranslator.FromHtml(SecondColor);
-            float FHue = F.GetHue();
-            float SHue = S.GetHue();
-            float D = (FHue - SHue)/(float)Amount;
-            D = Math.Abs(D);
-            List<Color> Inter = new List<Color>();
+            Color S = ColorTranslator.FromHtml(SecondColor);           
+            double Hue;
+            double Saturation;
+            double Value;
+            double SHue;
+            double SSaturation;
+            double SValue;
+            ColorToHSV(F, out Hue, out Saturation, out Value);
+            ColorToHSV(S, out SHue, out SSaturation, out SValue);
 
-            for(int i = 0; i < Amount; i++)
+            double DH = (SHue - Hue) / ((double)Amount - 1);
+            double DS = (SSaturation - Saturation) / ((double)Amount - 1);
+            double DV = (SValue - Value) / ((double)Amount - 1);
+            List<string> Inter = new List<string>((int)Amount);
+
+
+            for (int i = 0; i < Amount; i++)
             {
-                Inter.Add();
+                F = ColorFromHSV(Hue, Saturation, Value);
+                Inter.Add(ColorTranslator.ToHtml(F));
+                Hue += DH;
+                Saturation += DS;
+                Value += DV;
             }
 
-            ViewBag.test = D;
+            ViewBag.Inter = Inter;
+            ViewBag.test = DH;
             ViewBag.FC = F;
             ViewBag.SC = S;
             ViewBag.Amount = Amount;

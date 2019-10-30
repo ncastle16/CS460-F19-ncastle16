@@ -2,9 +2,27 @@
     ViewBag.Title = "Interporlator";
 }
 
-<link rel="stylesheet" href="HomepageStyles.css" />
 <h2>Inter</h2>
 
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">CS460HW4</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="https://localhost:44321/RGB/RGB">RGB</a></li>
+                <li><a href="https://localhost:44321/Interporlator/Interporlator">Interporlator</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="col-md-4">
 
     @using (Html.BeginForm("Interporlator", "Interporlator", FormMethod.Post))
@@ -22,9 +40,11 @@
         int i = 0;
         while (i < @ViewBag.Amount)
         {
-            <br />
-            <div style="float: right; width:100px; height:20px; background-color: @ViewBag.FC"></div>
-            ViewBag.FC += ViewBag.test;
+            
+            <div class="row">
+                @ViewBag.Inter[i]
+                <div style="float: right; width:100px; height:20px; background-color:  @ViewBag.Inter[i]"></div>
+             </div>
             i++;
         }
     }
