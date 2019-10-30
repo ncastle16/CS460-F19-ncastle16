@@ -36,11 +36,12 @@
             @Html.TextBox("Amount", null, new { @class = "form-control", type = "number" })
             <button type="submit" class="btn btn-primary">Generate!</button>
         </div>
+        @ViewBag.err;
 
         int i = 0;
         while (i < @ViewBag.Amount)
         {
-            
+
             <div class="row">
                 @ViewBag.Inter[i]
                 <div style="float: right; width:100px; height:20px; background-color:  @ViewBag.Inter[i]"></div>

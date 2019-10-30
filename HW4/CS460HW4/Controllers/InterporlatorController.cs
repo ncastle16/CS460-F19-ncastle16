@@ -18,7 +18,7 @@ namespace CS460HW4.Controllers
 
         [HttpPost]
         public ActionResult Interporlator(string FirstColor, string SecondColor, int? Amount)
-        {
+        { 
 
             void ColorToHSV(Color color, out double hue, out double saturation, out double value)
             {
@@ -54,6 +54,13 @@ namespace CS460HW4.Controllers
                 else
                     return Color.FromArgb(255, v, p, q);
             }
+
+            if (FirstColor != "^#([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$")
+            {
+                ViewBag.err = "Enter a Valid Color";
+                return View();
+            }
+
             Color F = ColorTranslator.FromHtml(FirstColor);
             Color S = ColorTranslator.FromHtml(SecondColor);           
             double Hue;
