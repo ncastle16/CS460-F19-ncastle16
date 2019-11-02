@@ -1,0 +1,40 @@
+﻿@model CS460HW5.Models.Assignment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Assignment</h4>
+    <hr />
+    <d1 class="d1-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PriorityOrder)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.DueTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseID)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.HomeworkTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+    </d1>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

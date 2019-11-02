@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CS460HW5.Models.Assignment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PriorityOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeworkTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayNameFor(model => model.PriorityOrder)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.DueDate)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.Department)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.DueTime)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.CourseID)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.HomeworkTitle)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.Notes)
+    </td>
+    <td>
+        @Html.DisplayNameFor(model => model.ID)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
+    }
+</table>

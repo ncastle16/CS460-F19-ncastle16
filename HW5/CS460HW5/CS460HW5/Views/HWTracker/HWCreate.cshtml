@@ -1,0 +1,69 @@
+﻿@using CS460HW5.Models
+@model Assignment
+
+@{
+    ViewBag.Title = "HWCreate";
+}
+
+<h2>HomeWork Creator</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div>
+        <div class="row">
+            <p>Create New HomeWork</p>
+        </div>
+        <div class="form-horizontal">
+
+            <table style="width:100%">
+                @Html.DropDownList("AssignmentPriority", new MultiSelectList(Enum.GetValues(typeof(PriorityOrder))), "Select Priority", new { @class = "form-control" })
+                <tr>
+                    <td>
+                        @Html.Label("Due Date: ")
+                        @Html.TextBox("DueDate", null, new { @class = "form-control", type = "string" })
+
+                    </td>
+                    <td>
+                        @Html.Label("Department: ")
+                        @Html.TextBox("Department", null, new { @class = "form-control", type = "string" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Due Time: ")
+                        @Html.TextBox("DueTime", null, new { @class = "form-control", type = "string" })
+                    </td>
+                    <td>
+                        @Html.Label("Course #: ")
+                        @Html.TextBox("Course#", null, new { @class = "form-control", type = "string" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Homework Title: ")
+                        @Html.TextBox("HomeworkTitle", null, new { @class = "form-control", type = "string" })
+                    </td>
+                    <td>
+                        @Html.Label("Notes: ")
+                        @Html.TextBox("Notes", null, new { @class = "form-control", type = "string" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
