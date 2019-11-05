@@ -9,7 +9,7 @@ namespace CS460HW5.DAL
 {
     public class AssignmentContext : DbContext
     {
-        public AssignmentContext() : base("name=Database")
+        public AssignmentContext() : base("name=MD")
         {
 
         }

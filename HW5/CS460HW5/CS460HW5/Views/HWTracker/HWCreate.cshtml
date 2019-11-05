@@ -5,6 +5,7 @@
     ViewBag.Title = "HWCreate";
 }
 
+
 <h2>HomeWork Creator</h2>
 
 @using (Html.BeginForm())
@@ -15,39 +16,45 @@
             <p>Create New HomeWork</p>
         </div>
         <div class="form-horizontal">
-
             <table style="width:100%">
-                @Html.DropDownList("AssignmentPriority", new MultiSelectList(Enum.GetValues(typeof(PriorityOrder))), "Select Priority", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.PriorityOrder, Assignment.Priority)
+                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
                 <tr>
-                    <td>
-                        @Html.Label("Due Date: ")
-                        @Html.TextBox("DueDate", null, new { @class = "form-control", type = "string" })
+                    <td class="form-group">
+                        @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
 
                     </td>
-                    <td>
-                        @Html.Label("Department: ")
-                        @Html.TextBox("Department", null, new { @class = "form-control", type = "string" })
+                    <td class="form-group">
+                        @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
 
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        @Html.Label("Due Time: ")
-                        @Html.TextBox("DueTime", null, new { @class = "form-control", type = "string" })
+                    <td class="form-group">
+                        @Html.LabelFor(model => model.DueTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.DueTime, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DueTime, "", new { @class = "text-danger" })
                     </td>
-                    <td>
-                        @Html.Label("Course #: ")
-                        @Html.TextBox("Course#", null, new { @class = "form-control", type = "string" })
+                    <td class="form-group">
+                        @Html.LabelFor(model => model.CourseID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.CourseID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CourseID, "", new { @class = "text-danger" })
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        @Html.Label("Homework Title: ")
-                        @Html.TextBox("HomeworkTitle", null, new { @class = "form-control", type = "string" })
+                    <td class="form-group">
+                        @Html.LabelFor(model => model.HomeworkTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.HomeworkTitle, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HomeworkTitle, "", new { @class = "text-danger" })
                     </td>
-                    <td>
-                        @Html.Label("Notes: ")
-                        @Html.TextBox("Notes", null, new { @class = "form-control", type = "string" })
+                    <td class="form-group">
+                        @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
                     </td>
                 </tr>
             </table>

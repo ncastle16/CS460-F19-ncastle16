@@ -1,1 +1,1 @@
-﻿DROP TABLE [dbo].[Assignment];
+﻿DROP TABLE [dbo].[Assignments];

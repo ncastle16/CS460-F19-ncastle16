@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "HWCreate")
 </p>
 
 <table class="table">
@@ -44,33 +44,33 @@
     {
 <tr>
     <td>
-        @Html.DisplayNameFor(model => model.PriorityOrder)
+        @Html.DisplayFor(modelItem => item.PriorityOrder)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.DueDate)
+        @Html.DisplayFor(modelItem => item.DueDate)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.Department)
+        @Html.DisplayFor(modelItem => item.Department)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.DueTime)
+        @Html.DisplayFor(modelItem => item.DueTime)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.CourseID)
+        @Html.DisplayFor(modelItem => item.CourseID)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.HomeworkTitle)
+        @Html.DisplayFor(modelItem => item.HomeworkTitle)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.Notes)
+        @Html.DisplayFor(modelItem => item.Notes)
     </td>
     <td>
-        @Html.DisplayNameFor(model => model.ID)
+        @Html.DisplayFor(modelItem => item.ID)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
         @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        @Html.ActionLink("Delete", "HWDelete", new { id = item.ID })
     </td>
 </tr>
     }
