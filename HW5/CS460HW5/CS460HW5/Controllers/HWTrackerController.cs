@@ -18,22 +18,8 @@ namespace CS460HW5.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Assignments.ToList());
-        }
-
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment user = db.Assignments.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            var Assignments = db.Assignments.OrderBy(s => s.DueDate);
+            return View(Assignments.ToList());
         }
 
         // GET: Users/Create
@@ -56,37 +42,6 @@ namespace CS460HW5.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(user);
-        }
-
-        // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Assignment user = db.Assignments.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID, PriorityOrder, DueDate, Department, DueTime, CourseID, HomeworkTitle, Notes")] Assignment user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             return View(user);
         }
 

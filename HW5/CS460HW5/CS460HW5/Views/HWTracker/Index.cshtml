@@ -6,6 +6,24 @@
 
 <h2>Index</h2>
 
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="http://localhost:54187/HWTracker/Index">Home</a></li>
+                <li><a href="http://localhost:54187/HWTracker/HWCreate">Create</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <p>
     @Html.ActionLink("Create New", "HWCreate")
 </p>
@@ -40,38 +58,112 @@
     </tr>
 
 
+
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.PriorityOrder)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DueDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Department)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DueTime)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CourseID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.HomeworkTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Notes)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ID)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "HWDelete", new { id = item.ID })
-    </td>
-</tr>
+        string color = item.PriorityOrder;
+
+        if (color == "High")
+        {
+            <tr style="background-color: lightcoral">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriorityOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeworkTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "HWDelete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+        if (color == "Medium")
+        {
+            <tr style="background-color: burlywood">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriorityOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeworkTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "HWDelete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+        if (color == "Low")
+        {
+            <tr style="background-color: antiquewhite">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriorityOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeworkTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "HWDelete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
     }
 </table>
