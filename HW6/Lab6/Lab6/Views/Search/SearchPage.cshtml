@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Lab6.Models.StockItem>
+
+@{
+    ViewBag.Title = "SearchPage";
+}
+
+<h2>Search Page</h2>
+
+@using (Html.BeginForm("SearchPage", "Search", FormMethod.Get))
+{
+    @Html.TextBox("SearchName")
+    <input type="submit" value="search" />
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                    <a type="submit" href="Details.cshtml" value="this.StockItemID"> @Html.DisplayFor(modelItem => item.StockItemName)</a>
+                    @Html.DisplayFor(modelItem => item.StockItemID)
+                </td>
+            </tr>
+    }
+</table>
+}
