@@ -33,6 +33,6 @@ namespace Lab6.Controllers
             StockItem stockItem = db.StockItems.Find(ID);
             ProductDetailViewModel viewModel = new ProductDetailViewModel(stockItem);
             return View(viewModel);
-        }
+        } 
     }
 }
