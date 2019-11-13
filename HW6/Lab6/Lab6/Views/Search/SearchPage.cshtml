@@ -16,9 +16,8 @@
     @foreach (var item in Model)
     {
             <tr>
-                <td>
-                    <a type="submit" href="Details.cshtml" value="this.StockItemID"> @Html.DisplayFor(modelItem => item.StockItemName)</a>
-                    @Html.DisplayFor(modelItem => item.StockItemID)
+                <td> 
+                    @Html.ActionLink(item.StockItemName, "Details", new { ID = item.StockItemID })
                 </td>
             </tr>
     }
