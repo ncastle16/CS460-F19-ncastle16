@@ -28,9 +28,8 @@ namespace Lab6.Models.ViewModels
             GrossSales = stockItem.InvoiceLines.Where(i => i.StockItemID == stockItem.StockItemID).Sum(i => i.ExtendedPrice);
             GrossProfit = stockItem.InvoiceLines.Where(i => i.StockItemID == stockItem.StockItemID).Sum(i => i.LineProfit);
             
-        
+        // To get top 10
              var topPurchasers = (from il in stockItem.InvoiceLines
-                             where il.StockItemID == stockItem.StockItemID
                              group new
                              {
                                  Quantity = il.Quantity
@@ -40,14 +39,19 @@ namespace Lab6.Models.ViewModels
                                          CustID = il.Invoice.Customer.CustomerID,
                                          CustName = il.Invoice.Customer.CustomerName,
                                      }
-        into CID
+                             into CID
                              select new
                              {
                                  CNAme = CID.Key.CustName,
                                  Q = CID.Sum(x => x.Quantity)
-                             }).OrderByDescending(o => o.Q).Take(10).ToString().ToList();
+                             }).OrderByDescending(o => o.Q).Take(10).ToList();
 
-            TopPurchasers = topPurchasers;
+            IEnumerable<int> intresult = topPurchasers.Select(i => i.Q);
+            IEnumerable<string> result = topPurchasers.Select(i => i.CNAme);
+            List<int> qauntity = intresult.ToList();
+            List<string> names = result.ToList();
+            TopPurchaserInt = qauntity;
+            TopPurchasers = names;
         }
 
         public string ItemName { get; set; }
@@ -73,6 +77,7 @@ namespace Lab6.Models.ViewModels
         public decimal GrossProfit { get; set; }
 
         //Top Purchasers
-        public List<char> TopPurchasers { get; set; }
+        public List<string> TopPurchasers { get; set; }
+        public List<int> TopPurchaserInt { get; set; }
     }
 }

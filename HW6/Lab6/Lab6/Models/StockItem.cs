@@ -2,6 +2,7 @@ namespace Lab6.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -23,7 +24,7 @@ namespace Lab6.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int StockItemID { get; set; }
 
-        [Required]
+        [Required, DisplayName("Stock Item Name")]
         [StringLength(100)]
         public string StockItemName { get; set; }
 
@@ -40,7 +41,7 @@ namespace Lab6.Models
 
         [StringLength(20)]
         public string Size { get; set; }
-
+        [DisplayName("Lead Time Days")]
         public int LeadTimeDays { get; set; }
 
         public int QuantityPerOuter { get; set; }
@@ -51,11 +52,11 @@ namespace Lab6.Models
         public string Barcode { get; set; }
 
         public decimal TaxRate { get; set; }
-
+        [DisplayName("Price")]
         public decimal UnitPrice { get; set; }
 
         public decimal? RecommendedRetailPrice { get; set; }
-
+        [DisplayName("Weight")]
         public decimal TypicalWeightPerUnit { get; set; }
 
         public string MarketingComments { get; set; }
@@ -63,7 +64,7 @@ namespace Lab6.Models
         public string InternalComments { get; set; }
 
         public byte[] Photo { get; set; }
-
+        [DisplayName("Origin")]
         public string CustomFields { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
@@ -75,7 +76,7 @@ namespace Lab6.Models
 
         public int LastEditedBy { get; set; }
 
-        [Column(TypeName = "datetime2")]
+        [Column(TypeName = "datetime2"), DisplayName("Valid From")]
         public DateTime ValidFrom { get; set; }
 
         [Column(TypeName = "datetime2")]

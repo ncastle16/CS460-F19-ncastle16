@@ -2,42 +2,45 @@
 @{
     ViewBag.Title = "Details";
 }
+    <div>
+        @Html.ActionLink("Back", "SearchPage")
+    </div>
+<br />
 
-<h2>Details</h2>
-
-<dl class="dl-horizontal">
+<h1>Stock Item</h1>
+<dl class="dl-horizontal" style="background-color:antiquewhite; outline-color:black; text-align:center">
     <dt>
-        @Html.DisplayNameFor(model => model.ItemName)
+        Item Name
     </dt>
     <dd>
         @Html.DisplayFor(model => model.ItemName)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.UnitPrice)
+        Unit Price
     </dt>
     <dd>
         @Html.DisplayFor(model => model.UnitPrice)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.TypicalWeightPerUnit)
+        Typical Weight per Unit
     </dt>
     <dd>
         @Html.DisplayFor(model => model.TypicalWeightPerUnit)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.LeadTimeDays)
+        Lead Time Days
     </dt>
     <dd>
         @Html.DisplayFor(model => model.LeadTimeDays)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.ValidFrom)
+        Valid From
     </dt>
     <dd>
         @Html.DisplayFor(model => model.ValidFrom)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.CustomFields)
+        Origin
     </dt>
     <dd>
         @Html.DisplayFor(model => model.CustomFields)
@@ -55,7 +58,11 @@
         @Html.DisplayFor(model => model.Size)
     </dd>
 </dl>
-<dl class="dl-horizontal">
+
+<br />
+
+<h1>Supplier Info</h1>
+<dl class="dl-horizontal" style="background-color:antiquewhite; outline-color:black; text-align:center">
     <dt>
         @Html.DisplayNameFor(model => model.Company)
     </dt>
@@ -63,13 +70,35 @@
         @Html.DisplayFor(model => model.Company)
     </dd>
     <dt>
+        @Html.DisplayNameFor(model => model.Phone)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Phone)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Fax)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Fax)
+    </dd>
+    <dt>
         @Html.DisplayNameFor(model => model.Website)
     </dt>
     <dd>
         @Html.DisplayFor(model => model.Website)
     </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Contact)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Contact)
+    </dd>
 </dl>
-<dl class="dl-horizontal">
+
+<br />
+
+<h2>Sales History Summary</h2>
+<dl class="dl-horizontal" style="background-color:antiquewhite; outline-color:black; text-align:center">
     <dt>
         @Html.DisplayNameFor(model => model.Orders)
     </dt>
@@ -77,30 +106,38 @@
         @Html.DisplayFor(model => model.Orders)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.GrossSales)
+        Gross Sales
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.GrossSales)
+        $@Html.DisplayFor(model => model.GrossSales)
     </dd>
     <dt>
-        @Html.DisplayNameFor(model => model.GrossProfit)
+        Gross Profit
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.GrossProfit)
+        $@Html.DisplayFor(model => model.GrossProfit)
     </dd>
 </dl>
-<dl>
+
+<br />
+
+<h2>Top Purchasers</h2>
+<dl class="d1-horizontal" style="background-color:antiquewhite; outline-color:black; text-align:center">
+    <dt>
+    Top 10 Purchasers
+</dt>
     @for (int i = 0; i < 10; i++)
     {
-        <dt>
-            @Html.DisplayNameFor(model => model.TopPurchasers)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TopPurchasers)
-        </dd>
+        
+    <dd>
+         @Html.DisplayFor(model => model.TopPurchasers[i]) :
+         @Html.DisplayFor(model => model.TopPurchaserInt[i]) Purchased
+    </dd>
 
     }
+
 </dl>
+
 <div>
     @Html.ActionLink("Back", "SearchPage")
 </div>
