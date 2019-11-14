@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Windows.Documents;
 
 namespace Lab6.Models.ViewModels
 {
@@ -25,7 +27,28 @@ namespace Lab6.Models.ViewModels
             Orders = stockItem.OrderLines.Where(i => i.StockItemID == stockItem.StockItemID).Count();
             GrossSales = stockItem.InvoiceLines.Where(i => i.StockItemID == stockItem.StockItemID).Sum(i => i.ExtendedPrice);
             GrossProfit = stockItem.InvoiceLines.Where(i => i.StockItemID == stockItem.StockItemID).Sum(i => i.LineProfit);
-            TopPurchasers = stockItem.InvoiceLines.Where().db.Invoice.Customer.CustomerName;
+            
+        
+             var topPurchasers = (from il in stockItem.InvoiceLines
+                             where il.StockItemID == stockItem.StockItemID
+                             group new
+                             {
+                                 Quantity = il.Quantity
+                             }
+                                     by new
+                                     {
+                                         CustID = il.Invoice.Customer.CustomerID,
+                                         CustName = il.Invoice.Customer.CustomerName,
+                                     }
+        into CID
+                             select new
+                             {
+                                 CNAme = CID.Key.CustName,
+                                 Q = CID.Sum(x => x.Quantity)
+                             }).OrderByDescending(o => o.Q).Take(10).ToString().ToList();
+
+            TopPurchasers = topPurchasers;
+        }
 
         public string ItemName { get; set; }
         public decimal UnitPrice { get; set; }
@@ -50,6 +73,6 @@ namespace Lab6.Models.ViewModels
         public decimal GrossProfit { get; set; }
 
         //Top Purchasers
-        public List<string> TopPurchasers { get; set; }
+        public List<char> TopPurchasers { get; set; }
     }
 }
