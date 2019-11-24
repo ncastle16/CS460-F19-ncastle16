@@ -21,7 +21,7 @@ namespace Lab7.Controllers
         public JsonResult GetUser()
         {
             string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Lab7Token"];
-            string uri = "https://api.github.com/users/ncastle16";
+            string uri = "https://api.github.com/user";
             string data = SendRequest(uri, "4456e15d4653f12805e78526362a5bdb9dee642d", "ncastle16");
 
             JObject test = JObject.Parse(data);
@@ -43,16 +43,51 @@ namespace Lab7.Controllers
             return Json(finalData, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetCommits()
+        {
+            string user = Request.QueryString["user"];
+            string repos = Request.QueryString["repo"];
+            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Lab7Token"];
+            string uri = "https://api.github.com/repos/" + user + "/" + repos + "/commits";
+            
+            string data = SendRequest(uri, "4456e15d4653f12805e78526362a5bdb9dee642d", user);
+
+            JArray test = JArray.Parse(data);
+            List<string> message = new List<string>();
+            List<string> name = new List<string>();
+            List<string> date = new List<string>();
+            int counter = 0;
+
+            foreach (JObject o in test.Children<JObject>())
+            {
+                message.Add((string)test[counter]["commit"]["message"]);
+                name.Add((string)test[counter]["commit"]["author"]["name"]);
+                date.Add((string)test[counter]["commit"]["committer"]["date"]);
+                counter++;
+            }
+
+            var finalData = new
+            {
+                message = message,
+                name = name,
+                date = date,
+                counter = counter
+            };
+
+            return Json(finalData, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetRepos()
         {
             string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Lab7Token"];
-            string uri = "https://api.github.com/users/ncastle16/repos";
+            string uri = "https://api.github.com/user/repos";
             string data = SendRequest(uri, "4456e15d4653f12805e78526362a5bdb9dee642d", "ncastle16");
 
             JArray test = JArray.Parse(data);
             List<string> names = new List<string>();
             List<string> owners = new List<string>();
             List<string> updated = new List<string>();
+            List<string> owner = new List<string>();
 
             int counter = 0;
 

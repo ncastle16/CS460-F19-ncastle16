@@ -20,6 +20,12 @@ namespace Lab7
                 );
 
             routes.MapRoute(
+                name: "GetCommits",
+                url: "api/commits",
+                defaults: new { controller = "Home", action = "GetCommits", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "GetRepos",
                 url: "api/repositories",
                 defaults: new { controller = "Home", action = "GetRepos" }

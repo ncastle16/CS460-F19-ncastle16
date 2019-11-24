@@ -21,12 +21,48 @@ $(document).ready(function () {
 
 });
 
+
+function commits(data, owner) {
+    var source = '/api/commits';
+    $.ajax({
+        type: 'GET',
+        url: '/api/commits?user=' + owner + '&repo=' + data,
+        dataType: 'json',
+        success: showCommits,
+        error: errorOnAjax
+    });
+}
+
+function showCommits(data) {
+    $('#commits').empty();
+    $('#commits').append(`
+    <table style="border: 1px solid black">
+            <tr>
+                <td style="width: 250px; display: table-cell; border:1px solid black">commit message</td>
+                <td style="width: 250px; display: table-cell; border:1px solid black">owner name</td>
+                <td style="width: 250px; display: table-cell; border:1px solid black">date</td>
+            </tr>
+        <table>
+`);
+    for (var i = 0; i < data.counter; i++) {
+        $('#commits').append(`
+        <table style="border: 1px solid black">
+            <tr>
+                <td style="width: 250px; display: table-cell; background-color:lightblue; border:1px solid black">${data.message[i]}</td>
+                <td style="width: 250px; display: table-cell; background-color:lightblue; border:1px solid black">${data.name[i]}</td>
+                <td style="width: 250px; display: table-cell; background-color:lightblue; border:1px solid black">${data.date[i]}</td>
+            </tr>
+        <table>
+`);
+    }
+}
+
 function errorOnAjax() {
     console.log('Error on AJAX return');
 }
 
 function test(data) {
-    console.log(data);
+    
     $('#profile').html(`
         <div class="panel panel-default" style="background-color:lightblue; height: 170px">
             <img class="thumbnail avatar" src="${data.avatar}" width="150" height="170" align="left">
@@ -37,8 +73,7 @@ function test(data) {
                 <ul> ${data.email}</ul>
             </div>
         </div>
-        <div>
-            
+        <div> 
         `);
 
 }
@@ -52,11 +87,13 @@ function RepoTest(data) {
                 <ul>${data.name[i]}</ul> 
                 <ul>${data.owner[i]}</ul>
                 <ul>Last updated: ${data.updated[i]}</ul>
+                <input id="${data.name[i]}" name="${data.owner[i]}" type="button" value="Get Commits" onclick="commits(this.id, this.name)"/>
             </div>
             <div style="width: 600px; display: table-cell; background-color:lightblue; border:1px solid black">
                 <ul>${data.name[i+1]}</ul> 
                 <ul>${data.owner[i+1]}</ul>
-                <ul>Last updated: ${data.updated[i+1]}</ul>
+                <ul>Last updated: ${data.updated[i + 1]}</ul>
+                <input id="${data.name[i + 1]}" name="${data.owner[i + 1]}" type="button" value="Get commits" onclick="commits(this.id, this.name)" />
             </div>
         </div>
     </div>
