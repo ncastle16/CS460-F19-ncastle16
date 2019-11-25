@@ -89,7 +89,7 @@ function RepoTest(data) {
                 <ul>${data.name[i]}</ul> 
                 <ul>${data.owner[i]}</ul>
                 <ul>Last updated: ${data.updated[i]}</ul>
-                <img class="thumbnail avatart" src="${data.avatar[i]}" width="150" height="170" align="right">
+                <img class="thumbnail avatart" src="${data.avatar[i]}" width="50" height="70" align="right">
                 <input id="${data.name[i]}" name="${data.owner[i]}" type="button" value="Get Commits" onclick="commits(this.id, this.name)"/>
             </div>
 `);
@@ -102,14 +102,14 @@ function RepoTest(data) {
                 <ul>${data.name[i]}</ul> 
                 <ul>${data.owner[i]}</ul>
                 <ul>Last updated: ${data.updated[i]}</ul>
-                <img class="thumbnail avatart" src="${data.avatar[i]}" width="150" height="170" align="right">
+                <img class="thumbnail avatart" src="${data.avatar[i]}" width="50" height="70" align="right">
                 <input id="${data.name[i]}" name="${data.owner[i]}" type="button" value="Get Commits" onclick="commits(this.id, this.name)"/>
             </div>
             <div style="width: 600px; display: table-cell; background-color:lightblue; border:1px solid black">
                 <ul>${data.name[i + 1]}</ul> 
                 <ul>${data.owner[i + 1]}</ul>
                 <ul>Last updated: ${data.updated[i + 1]}</ul>
-                <img class="thumbnail avatart" src="${data.avatar[i + 1]}" width="150" height="170" align="right">
+                <img class="thumbnail avatart" src="${data.avatar[i + 1]}" width="50" height="70" align="right">
                 <input id="${data.name[i + 1]}" name="${data.owner[i + 1]}" type="button" value="Get commits" onclick="commits(this.id, this.name)" />
             </div>
         </div>
