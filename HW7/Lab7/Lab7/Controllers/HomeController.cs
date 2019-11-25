@@ -20,9 +20,9 @@ namespace Lab7.Controllers
         //get user
         public JsonResult GetUser()
         {
-            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Lab7Token"];
+            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Githubtoken"];
             string uri = "https://api.github.com/user";
-            string data = SendRequest(uri, "4456e15d4653f12805e78526362a5bdb9dee642d", "ncastle16");
+            string data = SendRequest(uri, key, "ncastle16");
 
             JObject test = JObject.Parse(data);
             string name = (string)test["name"].ToString();
@@ -47,10 +47,10 @@ namespace Lab7.Controllers
         {
             string user = Request.QueryString["user"];
             string repos = Request.QueryString["repo"];
-            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Lab7Token"];
+            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Githubtoken"];
             string uri = "https://api.github.com/repos/" + user + "/" + repos + "/commits";
             
-            string data = SendRequest(uri, "4456e15d4653f12805e78526362a5bdb9dee642d", user);
+            string data = SendRequest(uri, key, user);
 
             JArray test = JArray.Parse(data);
             List<string> message = new List<string>();
@@ -79,28 +79,31 @@ namespace Lab7.Controllers
 
         public JsonResult GetRepos()
         {
-            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Lab7Token"];
+            string key = System.Web.Configuration.WebConfigurationManager.AppSettings["Githubtoken"];
             string uri = "https://api.github.com/user/repos";
-            string data = SendRequest(uri, "4456e15d4653f12805e78526362a5bdb9dee642d", "ncastle16");
+            string data = SendRequest(uri, key, "ncastle16");
 
             JArray test = JArray.Parse(data);
             List<string> names = new List<string>();
             List<string> owners = new List<string>();
             List<string> updated = new List<string>();
-            List<string> owner = new List<string>();
+            List<string> avatar = new List<string>();
 
             int counter = 0;
 
             foreach (JObject o in test.Children<JObject>()) {
-            names.Add((string)test[counter]["name"]);
-            owners.Add((string)test[counter]["owner"]["login"]);
-            updated.Add((string)test[counter]["updated_at"]);
-            counter++;
+                names.Add((string)test[counter]["name"]);
+                owners.Add((string)test[counter]["owner"]["login"]);
+                updated.Add((string)test[counter]["updated_at"]);
+                avatar.Add((string)test[counter]["owner"]["avatar_url"]);
+
+                counter++;
         }
 
 
             var finalData = new
             {
+                avatar = avatar,
                 name = names,
                 owner = owners,
                 updated = updated,
